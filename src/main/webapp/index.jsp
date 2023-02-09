@@ -32,7 +32,7 @@
     </header>
     <br>
     <main>
-        <form method="get" action="Servlet">
+        <form method="get" id="myform" action="Servlet">
             <div class="container" style="width:50%;">
                 <div class="card">
                     <div class="card-header">
@@ -63,7 +63,7 @@
                             <label class="btn btn-outline-primary" for="btnradio3">Euro</label>
                         </div>
                         <div class="input-group">
-                            <input type="text" id="dropdown_text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                            <input type="text" readonly id="answer" class="form-control">
 
                         </div>
                     </div>
@@ -77,5 +77,33 @@
 
     </footer>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+<script>
+    $("#myform").on('submit',function(e){
+        e.preventDefault();
+        var f =$(this).serialize();
+        console.log(f);
+
+        $.ajax({
+            url:"Servlet",
+            data: f,
+            type:'GET',
+            success: function (data,textStatus,jqXHR) {
+
+                let y =data.toString();
+
+                    $('#answer').val(y);
+
+
+            },
+            error: function (jqXHR,textStatus,errorThrown){
+                //console.log(data);
+                //console.log("error");
+            }
+        })
+
+
+    })
+</script>
 </body>
 </html>

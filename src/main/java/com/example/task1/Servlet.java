@@ -15,26 +15,27 @@ public class Servlet extends HttpServlet {
         double x,y;
         String str="";
         x=Double.parseDouble(request.getParameter("dinput1"));
-        System.out.println(x);
+        //System.out.println(x);
         str=request.getParameter("btnradio");
         switch (str)
         {
             case "Rupees":
                 y= x*82.665;
-                System.out.println(y);
+                //System.out.println(y);
                 break;
             case "Yuan":
                 y=x*6.7891;
-                System.out.println(y);
+               // System.out.println(y);
                 break;
             case "Euro":
                 y=x*0.9309;
-                System.out.println(y);
+               // System.out.println(y);
                 break;
             default:
                 y=x*1;
-                System.out.println(y);
+               // System.out.println(y);
         }
+        out.println(y);
 
     }
 
